@@ -2536,7 +2536,6 @@ hr {
   display: inline-block;
   font-weight: normal;
   font-style: normal;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -5895,9 +5894,9 @@ span.ui-crumb-node {
   z-index: 1002;
   position: absolute;
   display: block;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
   border: 1px solid #bfeff3;
   color: #999999;
   background: #e3f6f3;
@@ -6115,7 +6114,6 @@ span.ui-crumb-node {
   display: inline-block;
   font-weight: normal;
   font-style: normal;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   position: absolute;
@@ -6377,8 +6375,32 @@ i.ui-autocomplete-item-char-selected {
   padding: 0em 1em;
   font-style: italic;
 }
-/*@import "Uploader.less";*/
-/*@import "UploaderPro.less";*/
+.ui-uploader {
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  display: inline-block;
+  height: 2.5em;
+}
+.ui-uploader .ui-button {
+  min-height: 0;
+  height: 2.4em;
+}
+.ui-uploader .ui-progress {
+  height: 0.1em;
+}
+.ui-uploader .ui-progress-bar {
+  background: #6bd5ec;
+  height: 0.1em;
+  line-height: 0.1em;
+}
+.ui-uploader iframe {
+  display: none;
+}
+.ui-uploader-label {
+  margin-left: 0.625em;
+  vertical-align: middle;
+}
 .ui-carousel-content {
   position: relative;
   padding: 0 2em;
@@ -6619,6 +6641,25 @@ i.ui-autocomplete-item-char-selected {
 }
 .ui-togglepanel {
   display: block;
+}
+.ui-togglepanel-angle .ui-togglepanel-title {
+  cursor: pointer;
+}
+.ui-togglepanel-angle .ui-togglepanel-title:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\f105";
+  width: 1em;
+}
+.ui-togglepanel-angle.state-expanded .ui-togglepanel-title:before {
+  content: "\f107";
+}
+.ui-togglepanel-angle .ui-togglepanel-content {
+  text-indent: 1em;
 }
 /* 滑动杆控件开始 */
 /* 滑动杆的头 */
@@ -6950,7 +6991,6 @@ i.ui-autocomplete-item-char-selected {
   display: inline-block;
   font-weight: normal;
   font-style: normal;
-  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   content: '';

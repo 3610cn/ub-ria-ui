@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="utf-8" />
+        <title>ColorPicker - ESUI Demo</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../dep/esui/3.2.0-beta.1/demo/assets/google-code-prettify/prettify.css"/>
+        <link rel="stylesheet" href="assets/themes/standard.css" />
+        <!--[if lt IE 9]>
+        <link rel="stylesheet" href="../dep/esui/3.2.0-beta.1/demo/assets/ie8.css"/>
+        <![endif]-->
+    </head>
+<body>
+    <div class="header">
+        <h1 id="branding">ESUI ColorPicker</h1>
+    </div>
+    <div class="ui-g main-container">
+        <div id="side-bar" class="ui-u-1-5">
+            <ul id="navigator" class="ui-nav">
+            </ul>
+        </div>
+        <div id="main" class="ui-u-4-5">
+            <h2>Uploader</h2>
+            <p>默认的ColorPicker: 简单模式</p>
+            <div class="example">
+                <h3>
+                    简陋的Uploader
+                </h3>
+                <div class="row">
+                    <ul class="file-list" id="list">
+                    </ul>
+                    <hr />
+
+                    <input type="file"
+                        data-ui-id="uploader" data-ui-type="Uploader"
+                        data-ui-action="/upload"
+                        data-ui-file-type="auto"
+                        data-ui-name="file"
+                        data-ui-text="&lt;span class='ui-icon-upload'&gt;&lt;/span&gt; 上传文件"
+                        title="上传图片或Flash"
+                        accept=".gif,.jpg,.png,.swf"
+                        multiple
+                        />
+
+                    <p id="start"><a href="javascript:">开始上传</a></p>
+                    <p id="raw"><a href="javascript:">获取rawValue</a></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="../dep/esui/3.2.0-beta.1/demo/assets/loader/esl.js"></script>
+    <script src="config.js"></script>
+    <script src="../dep/esui/3.2.0-beta.1/demo/demo.js"></script>
+    <script src="../dep/esui/3.2.0-beta.1/demo/assets/google-code-prettify/prettify.js"></script>
+    <script id="main-js">
+    require(
+        [
+            'esui',
+            'ub-ria-ui/uploader/Uploader',
+            'jquery',
+            'underscore',
+            'demo',
+            'esui/Tab'
+        ],
+        function (ui, Uploader, $, u) {
+            window.ui = ui;
+            var controls = ui.init();
+            var uploader = controls[0];
+            uploader.on(
+                'filesadded',
+                function (event) {
+                    var files = Array.prototype.slice.call(arguments, 1);
+                    u.each(
+                        files,
+                        function (file) {
+                            $('#list').append('<li>' + file.name + '</li>');
+                        }
+                    );
+                }
+            );
+            $('#start a').click(
+                function () {
+                    uploader.start();
+                }
+            );
+
+            $('#raw a').click(
+                function () {
+                    alert(JSON.stringify(uploader.getRawValue()));
+                }
+            );
+        }
+    );
+    </script>
+    <script src="sitemap.js"></script>
+</body>
+</html>
